@@ -1,7 +1,5 @@
 const sorter = (a, b) => (a - b)
-const seconds = process.argv.slice(2).sort(sorter)
-
-
+const seconds = process.argv.slice(2).sort(sorter).filter(num => num > 0);
 
 const timer = function(seconds) {
   
@@ -12,6 +10,9 @@ const timer = function(seconds) {
     }, 1000 * seconds[time]);
 
   }
+  setTimeout(() => {
+    process.stdout.write('\n');
+  }, 1000 * seconds[seconds.length - 1] )
 };
 
 timer(seconds);
